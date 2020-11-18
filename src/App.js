@@ -56,11 +56,39 @@ function App() {
     // }
     return (
         <div className="App">
+            {/*{data.map(counter => (*/}
+            {/*    <Counter*/}
+            {/*        key={counter.id}*/}
+            {/*        value={counter.value}*/}
+            {/*        onIncrement={(amount) => {*/}
+            {/*            setData([...data].map(object => {*/}
+            {/*                if (object.id === counter.id) {*/}
+            {/*                    return {*/}
+            {/*                        ...object,*/}
+            {/*                        value: object.value + amount*/}
+            {/*                    }*/}
+            {/*                } else return object;*/}
+            {/*            }))*/}
+            {/*        }}*/}
+            {/*        onDecrement={(amount) => {*/}
+            {/*          setData([...data].map(object => {*/}
+            {/*            if (object.id === counter.id) {*/}
+            {/*              return {*/}
+            {/*                ...object,*/}
+            {/*                value: object.value - amount*/}
+            {/*              }*/}
+            {/*            } else return object;*/}
+            {/*          }))*/}
+            {/*        }}*/}
+            {/*    />*/}
+            {/*))}*/}
+
+
             {data.map(counter => (
                 <Counter
                     key={counter.id}
                     value={counter.value}
-                    onIncrement={(amount) => {
+                    onChange={(amount) => {
                         setData([...data].map(object => {
                             if (object.id === counter.id) {
                                 return {
@@ -70,28 +98,14 @@ function App() {
                             } else return object;
                         }))
                     }}
-                    onDecrement={(amount) => {
-                      setData([...data].map(object => {
-                        if (object.id === counter.id) {
-                          return {
-                            ...object,
-                            value: object.value - amount
-                          }
-                        } else return object;
-                      }))
-                    }}
                 />
             ))}
 
-            {/*<Total total={data.map(counter => {*/}
-            {/*    return(*/}
-            {/*        counter.value*/}
-            {/*    )*/}
-            {/*})}/>*/}
+            {/*<Total total={data.reduce(function(prev, current) {*/}
+            {/*    return prev + +current.value*/}
+            {/*}, 0)}/>*/}
 
-            <Total total={data.reduce(function(prev, current) {
-                return prev + +current.value
-            }, 0)}/>
+            <Total total={data.map(item => item.value).reduce((prev, next) => prev + next)}/>
 
         </div>
     );
